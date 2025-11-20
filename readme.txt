@@ -23,3 +23,18 @@ LƯU Ý:
 
 Cần lưu ý là khi test bằng chrome, ta sẽ không thấy hoạt động của round robin load balancer
 Nếu test bằng curl ta sẽ thấy tác dụng. Chưa biết tại sao chrome bị như vậy nhưng nếu sử dụng cloudflared tunnel để bổ sung https thì round robin sẽ hoạt động bình thường
+
+
+---
+
+docker run -d \
+  --name mysql-server \
+  -e MYSQL_ROOT_PASSWORD=SuperSecretRootPwd \
+  -e MYSQL_DATABASE=products_db \
+  -e MYSQL_USER=mvmanh \
+  -e MYSQL_PASSWORD=mvmanh@123456 \
+  -p 3306:3306 \
+  mysql:8.0
+
+
+mysql -h 127.0.0.1 -u root -p products_db < init_products.sql
