@@ -77,6 +77,10 @@ async function tryConnectMySQL() {
     ProductModel = null;
     dbSource = "memory";
     console.log("Could not connect to MySQL, using in-memory DB.", err.message);
+  }finally {
+    console.log({host: process.env.MYSQL_HOST, db: process.env.MYSQL_DATABASE,
+      user: process.env.MYSQL_USER,
+      pass: process.env.MYSQL_PASSWORD})
   }
 }
 
